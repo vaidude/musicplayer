@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register - Emotion Music</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        body {
+            background-color: #121212;
+            /* Dark background */
+            color: #fff;
+            /* White text */
+        }
+
+        .primary-green {
+            background-color: #1DB954;
+            color: #fff;
+        }
+
+        .primary-green-dark {
+            background-color: #1aa34a;
+        }
+
+        .spotify-font {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .spotify-btn {
+            background-color: #1DB954;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 12px 30px;
+        }
+
+        .spotify-btn:hover {
+            background-color: #1aa34a;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-black p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold font-spotify">Emotion Music</a>
+            <ul class="flex space-x-6 text-white">
+                <li><a href="#" class="hover:text-gray-400">Home</a></li>
+                <li><a href="#" class="hover:text-gray-400">Features</a></li>
+                <li><a href="#" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Register Form Section -->
+    <section class="bg-black py-16">
+        <div class="container mx-auto max-w-lg bg-gray-800 p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-semibold text-white mb-6 text-center">Create an Account</h2>
+
+            <!-- Display messages for success or error -->
+            {% if messages %}
+                <div class="space-y-4">
+                    {% for message in messages %}
+                        <div class="text-center text-white bg-red-600 p-3 rounded mb-3">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="POST" novalidate>
+                {% csrf_token %}
+
+                <!-- Name Field -->
+                <div class="mb-6">
+                    <label for="name" class="block text-white font-semibold">Name</label>
+                    <input type="text" name="name" id="name" class="w-full mt-2 p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-green" required minlength="3" placeholder="Your Full Name">
+                    <p class="text-sm text-gray-400 mt-1">Minimum 3 characters</p>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-6">
+                    <label for="email" class="block text-white font-semibold">Email</label>
+                    <input type="email" name="email" id="email" class="w-full mt-2 p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-green" required placeholder="Your Email">
+                    <p class="text-sm text-gray-400 mt-1">Please enter a valid email address</p>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-6">
+                    <label for="password" class="block text-white font-semibold">Password</label>
+                    <input type="password" name="password" id="password" class="w-full mt-2 p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-green" required minlength="8" placeholder="Password">
+                    <p class="text-sm text-gray-400 mt-1">Minimum 8 characters</p>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="mb-6">
+                    <label for="phone" class="block text-white font-semibold">Phone</label>
+                    <input type="number" name="phone" id="phone" class="w-full mt-2 p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-green" required pattern="\d{10}" placeholder="10-digit phone number">
+                    <p class="text-sm text-gray-400 mt-1">10-digit phone number</p>
+                </div>
+
+                <!-- Address Field -->
+                <div class="mb-6">
+                    <label for="address" class="block text-white font-semibold">Address</label>
+                    <input type="text" name="address" id="address" class="w-full mt-2 p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-green" required placeholder="Your Address">
+                    <p class="text-sm text-gray-400 mt-1">Provide your full address</p>
+                </div>
+
+                <button type="submit" class="w-full spotify-btn hover:primary-green-dark py-3 rounded-full mt-6">Register</button>
+            </form>
+
+            <p class="mt-4 text-center text-gray-400">Already have an account? <a href="/login/" class="text-primary-green">Login</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Emotion Music. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-twitter-square"></i></a>
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

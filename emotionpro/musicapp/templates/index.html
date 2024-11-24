@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Emotion-Based Music Player</title>
+    
+    <!-- Tailwind CSS CDN (Latest version) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        /* Custom Styles for Spotify Theme */
+        body {
+            background-color: #121212; /* Dark background */
+            color: #fff; /* White text */
+        }
+
+        .primary-green {
+            background-color: #1DB954;
+            color: #fff;
+        }
+
+        .primary-green-dark {
+            background-color: #1aa34a;
+        }
+
+        .spotify-font {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .spotify-btn {
+            background-color: #1DB954;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 12px 30px;
+        }
+
+        .spotify-btn:hover {
+            background-color: #1aa34a;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-black p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold font-spotify">Emotion Music</a>
+            <ul class="flex space-x-6 text-white">
+                <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                <li><a href="#features" class="hover:text-gray-400">Features</a></li>
+                <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-96 relative" style="background-image: url('https://source.unsplash.com/random/1600x900/?music');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto text-center text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <h1 class="text-4xl sm:text-6xl font-extrabold">Feel the Music, Feel the Emotion</h1>
+            <p class="mt-4 text-lg">Discover music that matches your mood. Let's play!</p>
+            <a href='/login/'><button class="mt-6 spotify-btn hover:primary-green-dark">Get Started</button></a>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="features" class="my-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-12">Our Features</h2>
+
+            <!-- Custom Carousel Section (Spotify-style) -->
+            <div class="relative">
+                <div class="flex space-x-6 overflow-x-auto py-6">
+                    <div class="w-80 bg-black rounded-xl p-6">
+                        <img src="https://i.scdn.co/image/ab67616d0000b27397f9083601456b34e5ff5753" class="w-full rounded-lg mb-4" alt="Happy Music">
+                        <h5 class="text-xl font-semibold text-white">Joyful Playlists</h5>
+                        <p class="text-gray-400">Music to boost your mood and keep the energy high.</p>
+                    </div>
+                    <div class="w-80 bg-black rounded-xl p-6">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlEvX0LzNTqEtuWK3VlSeSVWwMMZLP4SKkw&s" class="w-full rounded-lg mb-4" alt="Sad Music">
+                        <h5 class="text-xl font-semibold text-white">Emotional Sounds</h5>
+                        <p class="text-gray-400">Feel your emotions through soft and melancholic melodies.</p>
+                    </div>
+                    <div class="w-80 bg-black rounded-xl p-6">
+                        <img src="https://i.scdn.co/image/ab6761610000e5eb7e91df247cba9837ef6801e2" class="w-full rounded-lg mb-4" alt="Calm Music">
+                        <h5 class="text-xl font-semibold text-white">Relaxing Tunes</h5>
+                        <p class="text-gray-400">Unwind and relax with serene sounds.</p>
+                    </div>
+                    <div class="w-80 bg-black rounded-xl p-6">
+                        <img src="https://i1.sndcdn.com/artworks-OstQXrxFpezPxafj-W4gydQ-t1080x1080.jpg" class="w-full rounded-lg mb-4" alt="Calm Music">
+                        <h5 class="text-xl font-semibold text-white">Romantic Tunes</h5>
+                        <p class="text-gray-400">Beautiful Romantic Music with Relaxing music.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-black">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold text-white mb-8">Why Choose Us?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="border border-gray-600 rounded-lg p-6 shadow-lg hover:shadow-2xl">
+                    <i class="fas fa-headphones-alt text-primary-green text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Emotion-Based Playlists</h3>
+                    <p class="text-gray-400">Get matched with music that fits your current emotional state.</p>
+                </div>
+                <div class="border border-gray-600 rounded-lg p-6 shadow-lg hover:shadow-2xl">
+                    <i class="fas fa-compact-disc text-primary-green text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Curated Music</h3>
+                    <p class="text-gray-400">Explore carefully curated tracks tailored to your preferences.</p>
+                </div>
+                <div class="border border-gray-600 rounded-lg p-6 shadow-lg hover:shadow-2xl">
+                    <i class="fas fa-cloud text-primary-green text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Stream Anytime</h3>
+                    <p class="text-gray-400">Access your playlists anytime, anywhere, without interruptions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-black text-white py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+            <p class="mb-6">Have questions or feedback? We would love to hear from you!</p>
+            <a href="mailto:support@emotionmusic.com" class="spotify-btn hover:primary-green-dark">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Emotion Music. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-twitter-square"></i></a>
+                <a href="#" class="mx-3 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

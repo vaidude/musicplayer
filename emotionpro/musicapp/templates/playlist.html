@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Emotion-Based Music Recommendation</title>
+</head>
+
+<body class="bg-gray-800 text-white">
+
+    <div class="container mx-auto p-5">
+        <h1 class="text-4xl font-bold mb-4 text-center">Emotion-Based Music Recommendation</h1>
+
+        <!-- Display the detected emotion -->
+        <div class="text-center mb-6">
+            <p class="text-2xl mb-2">Detected Emotion: {{ mood }}</p>
+            {% if emoji_path %}
+            <img src="{% static emoji_path %}" alt="Emotion Emoji" class="mx-auto h-32 w-32">
+            {% endif %}
+        </div>
+
+        <!-- Display recommended music -->
+        <h2 class="text-3xl font-semibold mb-4 text-center">Recommended Music</h2>
+        
+        {% if not songs %}
+            <p class="text-center text-xl">No songs found for this mood.</p>
+        {% else %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for song in songs %}
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">{{ song.name }}</h3>
+                    <p class="text-lg mb-2">{{ song.artist }}</p>
+                    <div class="text-center mb-4">
+                        <a href="{{ song.id }}" target="_blank">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+                                Play on Spotify
+                            </button>
+                        </a>
+                    </div>
+                    <!-- Embed Spotify player -->
+                    <div class="text-center">
+                        <iframe class="spotify-player" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+                        <iframe src="{{ song.id }}" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Get all the iframe elements
+                            const iframes = document.querySelectorAll(".spotify-player");
+                            
+                            // Loop through each song and set the Spotify embed URL
+                            {% for song in songs %}
+                                const songId = "{{ song.id }}";  // The song id is a Spotify URL
+                                const trackId = songId.split("/").pop();  // Extract the track ID
+                                const iframe = iframes[{{ forloop.counter0 }}];  // Get the iframe element for the current song
+                                iframe.src = `https://open.spotify.com/embed/track/${trackId}?autoplay=1`;
+                            {% endfor %}
+                        });
+                    </script>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
