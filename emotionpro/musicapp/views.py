@@ -110,6 +110,30 @@ def editprofile(request):
         return render(request, 'profile.html', {'user': user})
     messages.error(request, "You need to log in to edit your profile.")
     return redirect('login')
+def adlogin(request):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        password = request.POST.get('password')
+        u = 'admin'
+        p = 'admin'
+        if name==u:
+            if password==p:
+                return redirect('adhome')
+            else:
+             return render(request,"adlogin.html")
+        else:
+             return render(request,"adlogin.html")
+    else:
+         return render(request,"adlogin.html")
+def adhome(request):
+    return render(request,'adhome.html')
+def userlist(request):
+    user=User.objects.all()
+    return render(request,'userlist.html',{'user':user})
+def deleteuser(request,id):
+    data=User.objects.filter(id=id)
+    data.delete()
+    return redirect('userlist')
 
 import numpy as np
 import pandas as pd
